@@ -88,17 +88,29 @@ public void setRegistry(Registry registry) {
         IDconnection = iDconnection;
         VC=new ValuesClient(registry);
         VS=new ValuesServer();
-        PDB=new PeerDataBase();
+        PDB=new PeerDataBase(this.registry);
         VS.startPeerLocalServer(iDconnection,this.PDB);
     }
 
 
 
-	public String actLikeClient(String FriendID,String Key) throws RemoteException, NotBoundException {
+	public IRemoteValues actLikeClient(String FriendID) throws RemoteException, NotBoundException {
 		  IRemoteValues IV=VC.getService(FriendID);
-	
-		  return IV.Find(Key);
+	      return  IV;
 	}
+	
+	
+	public String AddDataValues(String key,String value) throws RemoteException, NotBoundException {
+		  IRemoteValues IV=actLikeClient(this.IDconnection);
+		   if( IV.Store(value, value,0)) {
+			   return "added to your server or your friends server";
+		   }else {
+			   return "no space in your server or your friends server";
+		   }
+		
+	}
+	
+	
 
 
     
