@@ -77,7 +77,14 @@ public class RemoteValuesServant extends UnicastRemoteObject implements IRemoteV
 	}
 
 
-
+	@Override
+	public void AddFriend(String FriendID) {
+		this.PDB.AddFriend(FriendID);
+	}
+	@Override
+	public void RemoveFriend(String FriendID) {
+		this.PDB.RemoveFriend(FriendID);
+	}
 
 
 

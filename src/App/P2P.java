@@ -1,5 +1,4 @@
 package App;
-
 import java.rmi.AlreadyBoundException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -24,26 +23,32 @@ public class P2P {
 		
 		
 
-		System.out.println("1-add");
-		System.out.println("2-search");
 		
 		
 		Peer peer = new Peer(ID);
 	
-		int h1=s.nextInt();
+		
+		while(true) {
+			System.out.println("1-Add Data");
+			System.out.println("2-Search");
+			System.out.println("3-Add Friend ");
+			System.out.println("4-Remove Friend ");
+			System.out.println("enter a num");
+			int h1=s.nextInt();
 		switch(h1) {
 		case 1:{
-			IRemoteValues RemoteValues = (IRemoteValues) peer.getRegistry().lookup(ID);
+			System.out.println("enter data to store");
 	 	 		Scanner s1 = new Scanner(System.in);
 	 			String Data=s1.nextLine();
-	 			RemoteValues.Store(Data, Data);
-	 			 System.out.println("added");
+	 			String Message = peer.AddDataValues(Data, Data);
+	 			 System.out.println(Message);
 			break;
 		}
 		case 2:{
 			 System.out.println("to");
 	 			Scanner s2 = new Scanner(System.in);
 	 	 		 String h=s2.nextLine();
+	 	 		System.out.println("enter data to search");
 	 	 		Scanner s11 = new Scanner(System.in);
 	 			String h11=s11.nextLine();
 	 	 		// peer.actLikeClient(h,h11);
@@ -51,7 +56,27 @@ public class P2P {
 			
 			break;
 		}
+		case 3:{
+			System.out.println("enter friend name to add");
+			Scanner s2 = new Scanner(System.in);
+	 		 String FriendID=s2.nextLine();
+	 		 
+	 		 peer.actLikeServerAdd(FriendID, ID);
+	 		System.out.println("added a friend");
+			break;
 		}
+		case 4:{
+			System.out.println("enter friend name to remove");
+			Scanner s2 = new Scanner(System.in);
+	 		 String FriendID=s2.nextLine();
+	 		 
+	 		 peer.actLikeServerRemove(FriendID, ID);
+	 		System.out.println("removed a friend");
+			break;
+		}
+		}
+	}
 	}
 	
 }
+
