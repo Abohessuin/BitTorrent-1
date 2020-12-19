@@ -40,16 +40,23 @@ public class RemoteValuesServant extends UnicastRemoteObject implements IRemoteV
 	@Override
 	public boolean Store(String KeyData,String ValueData,int flag) throws AccessException, RemoteException, NotBoundException {
 		if(flag==0) {
+			System.out.println("here");
 			int capictyOFThisServer=this.PDB.getMaxStorageCapacity();
 			Registry registry=this.PDB.getRegistry();
-			int realSize=this.PDB.getMyPeersFriends().size();
+			int realSize=this.PDB.getMyData().size();
+			System.out.println(realSize+" "+capictyOFThisServer);
 			if(realSize<capictyOFThisServer) {
+				System.out.println("here again");
 				this.PDB.StoreData(KeyData, ValueData);
 				return true;
 			}else {
 				ArrayList<String>myFriendsPeer=this.PDB.getMyPeersFriends();
-				for(int i=0;i<capictyOFThisServer;i++) {
+				System.out.println("here againnn");
+				for(int i=0;i<myFriendsPeer.size();i++) {
+					System.out.println(myFriendsPeer.get(i));
+					System.out.println(registry);
 					IRemoteValues remoteServerValues = (IRemoteValues) registry.lookup(myFriendsPeer.get(i));
+					System.out.println(remoteServerValues);
 					if(remoteServerValues.Store(KeyData, ValueData,1)) {
 						return true;
 					}
@@ -67,7 +74,7 @@ public class RemoteValuesServant extends UnicastRemoteObject implements IRemoteV
 
 	public boolean storeForFriend(String KeyData,String ValueData) {
 		int capictyOFThisServer=this.PDB.getMaxStorageCapacity();
-		int realSize=this.PDB.getMyPeersFriends().size();
+		int realSize=this.PDB.getMyData().size();
 		if(realSize<capictyOFThisServer) {
 			this.PDB.StoreData(KeyData, ValueData);
 			return true;
