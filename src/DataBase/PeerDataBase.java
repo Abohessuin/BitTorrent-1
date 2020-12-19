@@ -13,7 +13,7 @@ public class PeerDataBase {
 
 	private  ArrayList<String> MyPeersFriends;
 	private  Map<String,String> MyData;
-	public static final int Max_storage_capacity = 3;
+	public static final int Max_storage_capacity = 1;
     private Registry registry;
 
 	public PeerDataBase(Registry registry) {
@@ -64,7 +64,7 @@ public class PeerDataBase {
 		this.MyPeersFriends.add(Friend);
 	}
 
-	public void RemoveFriend(Peer Friend) {
+	public void RemoveFriend(String Friend) {
 		this.MyPeersFriends.remove(Friend);
 	}
 

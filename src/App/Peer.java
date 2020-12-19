@@ -99,6 +99,11 @@ public void setRegistry(Registry registry) {
 	      return  IV;
 	}
 	
+	public String actLikeClient(String FriendID,String Key) throws RemoteException, NotBoundException {
+		IRemoteValues IV=VC.getService(FriendID);
+
+		return IV.Find(Key);
+	}
 	
 	public String AddDataValues(String key,String value) throws RemoteException, NotBoundException {
 		  IRemoteValues IV=actLikeClient(this.IDconnection);
@@ -111,6 +116,17 @@ public void setRegistry(Registry registry) {
 	}
 	
 	
+	public void actLikeServerAdd(String FriendID,String MyID) throws RemoteException, NotBoundException {
+		IRemoteValues IV=VC.getService(MyID);
+
+		IV.AddFriend(FriendID);
+
+	}
+	public void actLikeServerRemove(String FriendID,String MyID) throws RemoteException, NotBoundException {
+		IRemoteValues IV=VC.getService(MyID);
+		IV.RemoveFriend(FriendID);
+
+	}
 
 
     
