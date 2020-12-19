@@ -40,7 +40,7 @@ public class P2P {
 			System.out.println("enter data to store");
 	 	 		Scanner s1 = new Scanner(System.in);
 	 			String Data=s1.nextLine();
-	 			String Message = peer.AddDataValues(Data, Data);
+	 			String Message = peer.AddDataValues(Data, Data,ID);
 	 			 System.out.println(Message);
 			break;
 		}

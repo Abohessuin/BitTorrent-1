@@ -105,8 +105,8 @@ public void setRegistry(Registry registry) {
 		return IV.Find(Key);
 	}
 	
-	public String AddDataValues(String key,String value) throws RemoteException, NotBoundException {
-		  IRemoteValues IV=actLikeClient(this.IDconnection);
+	public String AddDataValues(String key,String value,String ID) throws RemoteException, NotBoundException {
+		  IRemoteValues IV=actLikeClient(ID);
 		   if( IV.Store(value, value,0)) {
 			   return "added to your server or your friends server";
 		   }else {

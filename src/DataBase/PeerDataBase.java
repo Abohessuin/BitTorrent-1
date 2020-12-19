@@ -97,7 +97,7 @@ public class PeerDataBase {
 
 	public Registry getRegistry() {
 		// TODO Auto-generated method stub
-		return null;
+	return this.registry;
 	}
 
 }
