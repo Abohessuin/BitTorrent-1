@@ -32,7 +32,7 @@ public class RemoteValuesServant extends UnicastRemoteObject implements IRemoteV
         vistedNodes.add(this.PDB.getPeerID());
 		  }
       Registry registry=this.PDB.getRegistry();
-      System.out.println("1 :"+vistedNodes);
+     // System.out.println("1 :"+vistedNodes);
          if(searchKey(Key)!=null) {
               return this.PDB.getPeerID();
          }else {
@@ -42,11 +42,11 @@ public class RemoteValuesServant extends UnicastRemoteObject implements IRemoteV
             	 
                 if(!vistedNodes.contains(myFriends.get(i))) {
                 	vistedNodes.add(myFriends.get(i));
-                	 System.out.println("2 :"+vistedNodes);
+                	// System.out.println("2 :"+vistedNodes);
                     IRemoteValues remoteServerValues;
 					try {
 						remoteServerValues = (IRemoteValues) registry.lookup(myFriends.get(i));
-						System.out.println("-> "+myFriends.get(i));
+						//System.out.println("-> "+myFriends.get(i));
 						  if(!remoteServerValues.Find(Key, vistedNodes).equals("fail")) {
 							 
 							 
@@ -60,7 +60,7 @@ public class RemoteValuesServant extends UnicastRemoteObject implements IRemoteV
                   
                  }
              }
-            System.out.println("3 :"+vistedNodes);
+           // System.out.println("3 :"+vistedNodes);
               return "fail";
          }
 
