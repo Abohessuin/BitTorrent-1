@@ -24,7 +24,7 @@ public class P2P {
 		int AvResTime=0;
 
 
-		
+
 		Peer peer = new Peer(ID);
 
 
@@ -34,7 +34,7 @@ public class P2P {
 			System.out.println("3-Add Friend ");
 			System.out.println("4-Remove Friend ");
 			System.out.println("5-check failure rate ");
-			System.out.println("6-Average Responce Time ");
+			System.out.println("6- Average Responce Time ");
 			System.out.println("enter a num");
 			int num=s.nextInt();
 			switch(num) {
@@ -74,21 +74,21 @@ public class P2P {
 				break;
 			}
 			case 3:{
-				System.out.println("enter node name to add");
+				System.out.println("enter friend name to add");
 				Scanner s2 = new Scanner(System.in);
 				String FriendID=s2.nextLine();
 
 				peer.actLikeServerAdd(FriendID, ID);
-				System.out.println("added a connection");
+				System.out.println("added a friend");
 				break;
 			}
 			case 4:{
-				System.out.println("enter node name to remove");
+				System.out.println("enter friend name to remove");
 				Scanner s2 = new Scanner(System.in);
 				String FriendID=s2.nextLine();
 
 				peer.actLikeServerRemove(FriendID, ID);
-				System.out.println("removed a conection");
+				System.out.println("removed a friend");
 				break;
 			}
 			case 5:{
